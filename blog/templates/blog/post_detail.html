@@ -1,14 +1,14 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-{% for post in posts %}
 <article class="post">
+    {% if post.published_date %}
     <time class="date">
         <h2>{{ post.published_date }}</h2>
     </time>
-    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+    {% endif %}
+    <h2>{{ post.title }}</h2>
     <h2>Author:&emsp;<i id="author-name">{{ post.author }}</i></h2>
     <p>{{ post.text|linebreaksbr }}</p>
 </article>
-{% endfor %}
 {% endblock %}
