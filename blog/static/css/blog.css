@@ -73,6 +73,50 @@ h4 {
     background-color: #c8412d;
 }
 
-#author-name {
-    color: #c8412d;
+.username-topbar {
+    color: #00bcf0;
+}
+
+.top-menu-icon {
+    text-decoration: none;
+    transition: transform .2s;
+    float: right;
+    margin-top: 20px;
+    margin-left: 30px;
+    color: #e1ebed;
+}
+
+.top-menu-icon:hover {
+    position: relative;
+    color: #ffe556;
+    transform: scale(1.5);
+}
+
+.logged-in-as {
+    font-family: 'Lobster', cursive;
+    font-size: 18pt;
+    color: #e1ebed;
+}
+
+.top-menu-icon[aria-label]:hover:after {
+    content: attr(aria-label);
+    position: absolute;
+    right: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20;
+}
+
+.invincible-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }

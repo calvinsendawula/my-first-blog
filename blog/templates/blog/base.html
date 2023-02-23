@@ -13,16 +13,41 @@
 <body>
     <header class="page-header">
         {% if user.is_authenticated %}
-        <a href="{% url 'post_new' %}" class="top-menu">
-            {% include './icons/file-earmark-plus.svg' %}
-        </a>
+        <h2 class="top-menu"><small>
+                <a href="{% url 'logout' %}" class="top-menu-icon" aria-label="Logout">
+                    {% include './icons/door-open.svg' %}</a></small>
+        </h2>
+        <h2 class="top-menu"><small>
+                <a href="{% url 'post_new' %}" class="top-menu-icon" aria-label="New Post">
+                    {% include './icons/file-earmark-plus.svg' %}</a></small>
+        </h2>
+        {% else %}
+        <h2 class="top-menu"><small>
+                <a href="{% url 'login' %}" class="top-menu-icon">
+                    Login {% include './icons/lock.svg' %}</a></small>
+        </h2>
         {% endif %}
         <div class="container">
-            <h1><a href="/">Invincible Blog</a></h1>
+            <div class="row">
+                <div class="col-2" style="display:flex; justify-content: center; align-items: center;">
+                    <img src="{% static 'img/omni-man.jpeg' %}" class="invincible-logo">
+                </div>
+                <div class="col">
+                    <h1><a href="/">Invincible Blog</a></h1>
+                    {% if user.is_authenticated %}
+                    <text class="logged-in-as">
+                        Logged in as:&emsp;<text class="username-topbar">
+                            {{ user.username }}</text></text>
+                    {% else %}
+                    <text class="logged-in-as">
+                        Log in to make your own posts</text>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </header>
     <main class="container">
-        <div class="row">
+        <div class="row container">
             <div class="col">
                 {% block content %}
                 {% endblock %}
